@@ -27,5 +27,7 @@ print(f2)
 print(f1 + f2)
 # test __sub__
 print(f1 - f2)
+
 # test inverse() 
 print(f1.inverse())
+print(f2.inverse())
