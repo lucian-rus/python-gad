@@ -1,33 +1,36 @@
-class Fractie(object): 
-    def __init__(self, numarator, numitor):
-        self.numarator = numarator;
-        self.numitor = numitor;
+from mathp import *
 
-    def __str__(self):
-        return (str(self.numarator) + "/" + str(self.numitor))
+def get_sum(*args, **kwargs):
+    sum = 0
+    
+    for i in args:
+        try:
+            sum += i
+        except TypeError as e:
+            pass
 
-    def __add__(self, other):
-        return (self.numarator / self.numitor) + (other.numarator / other.numitor)
+    return sum
 
-    def __sub__(self, other):
-        return (self.numarator / self.numitor) - (other.numarator / other.numitor)
+def read_data():
+    value = input('value: ')
+    try:
+        return int(value)
+    except ValueError:
+        print("not a number")
+        return 0
 
-    def inverse(self):
-        return Fractie(self.numitor, self.numarator)
+# test get_sum
+print("problem 1:")
+print(get_sum(1, 5, -3, 'abc', [12, 56, 'cad']))
+print(get_sum())
+print(get_sum(2, 4, 'abc', param_1=2))
 
-# test instancing
-f1 = Fractie(13, 4)
-f2 = Fractie(21, 5)
+# test number retrieval
+print("problem 2:")
+print(read_data())
 
-# test __str__
-print(f1)
-print(f2)
-
-# test __add__
-print(f1 + f2)
-# test __sub__
-print(f1 - f2)
-
-# test inverse() 
-print(f1.inverse())
-print(f2.inverse())
+# test recursive
+print("problem 3:")
+print(sum_n(5))
+print(sum_n_even(5))
+print(sum_n_odd(5))
